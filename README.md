@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Thien Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js App Router.
 
-First, run the development server:
+## Local Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create env file:
+
+```bash
+cp .env.example .env.local
+```
+
+3. Start the app:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Contact Feature (Recruiters Send JD)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The homepage includes a contact form where recruiters can submit:
 
-## Learn More
+- Name
+- Recruiter email
+- Company
+- Message
+- JD file attachment (PDF, DOC, DOCX, TXT up to 10MB)
 
-To learn more about Next.js, take a look at the following resources:
+Submitted data is sent to your inbox through SMTP via API route `POST /api/contact`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Required Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Add these in `.env.local`:
 
-## Deploy on Vercel
+- `SMTP_HOST`: SMTP server host (example: `smtp.gmail.com`)
+- `SMTP_PORT`: SMTP port (usually `587`)
+- `SMTP_SECURE`: `true` for SSL (`465`), otherwise `false`
+- `SMTP_USER`: SMTP username
+- `SMTP_PASS`: SMTP password or app password
+- `SMTP_FROM`: sender email shown in the outbound email
+- `CONTACT_TO_EMAIL`: your inbox receiving recruiter submissions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```

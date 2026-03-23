@@ -1,11 +1,11 @@
-export const site = {
-  name: "Thien Nguyen",
+  export const site = {
+  name: "Nguyen Bao Thien",
   role: "Full-Stack Developer",
   location: "Ho Chi Minh City, Vietnam",
-  email: "thien@example.com",
-  availability: "Open to freelance and full-time opportunities",
+  email: "[EMAIL_ADDRESS]",
+  availability: "Open to full-time internships",
   intro:
-    "I design and build fast, reliable web products with a focus on clean UX, maintainable architecture, and real business impact.",
+    "Hi, I'm Nguyen Bao Thien! I'm a software developer and a third-year student studying Computer Science at Ho Chi Minh city University of Technology, HCMUT.",
   about: [
     "I enjoy turning rough ideas into polished digital products.",
     "My strengths are product thinking, frontend engineering, and API integration.",
@@ -24,9 +24,8 @@ export const site = {
     "GitHub Actions",
   ],
   socialLinks: [
-    { label: "GitHub", href: "https://github.com/your-username" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/your-profile" },
-    { label: "Email", href: "mailto:thien@example.com" },
+    { label: "GitHub: nbThien0101", href: "https://github.com/nbThien0101" },
+    { label: "LinkedIn: Nguyen Bao Thien", href: "https://www.linkedin.com/in/nguyenbaothien0101" },
   ],
 };
 
