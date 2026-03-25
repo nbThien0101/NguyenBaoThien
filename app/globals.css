@@ -30,6 +30,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  font-size: 21px;
+}
+
 body {
   background: radial-gradient(circle at 10% 0%, #12335e 0%, transparent 45%),
     radial-gradient(circle at 85% 10%, #3f1a4b 0%, transparent 50%),
@@ -136,6 +140,81 @@ a {
   );
 }
 
+/* Hero two-column layout */
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-avatar-wrap {
+  flex-shrink: 0;
+  position: relative;
+  width: 190px;
+  height: 190px;
+}
+
+.hero-avatar-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--accent),
+    var(--accent-2),
+    var(--accent)
+  );
+  opacity: 0.5;
+  animation: spinRing 8s linear infinite;
+  filter: blur(4px);
+}
+
+.hero-avatar-frame {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 183, 77, 0.35);
+  animation: floatAvatar 4s ease-in-out infinite;
+}
+
+.hero-avatar-img {
+  object-fit: cover;
+  object-position: top;
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatAvatar {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+@media (max-width: 700px) {
+  .hero-inner {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+  .hero-avatar-wrap,
+  .hero-avatar-frame {
+    width: 130px;
+    height: 130px;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+}
+
 .eyebrow {
   margin: 0;
   text-transform: uppercase;
@@ -217,6 +296,21 @@ h1 span {
   gap: 1rem;
 }
 
+.cv-embed-wrap {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.cv-embed {
+  display: block;
+  width: 100%;
+  height: 92vh;
+  min-height: 700px;
+  border: none;
+}
+
 .timeline-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -260,6 +354,45 @@ h1 span {
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface-strong);
+}
+
+.skills-table {
+  display: grid;
+  gap: 1rem;
+}
+
+.skills-row {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.skills-category {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #ffdca6;
+}
+
+.skills-chips {
+  margin-top: 0;
+  gap: 0.55rem;
+}
+
+.skills-chips .chip {
+  font-size: 0.95rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skill-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: #ffd58b;
+  flex-shrink: 0;
 }
 
 .project-links {
@@ -371,6 +504,11 @@ h1 span {
 
 .contact-actions {
   margin-top: 0.2rem;
+}
+
+.captcha-wrap {
+  margin-top: 0.1rem;
+  overflow-x: auto;
 }
 
 .contact-actions .btn[disabled] {

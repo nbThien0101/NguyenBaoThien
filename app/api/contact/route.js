@@ -24,7 +24,34 @@ function getRequiredEnv() {
     pass: process.env.SMTP_PASS,
     toEmail: process.env.CONTACT_TO_EMAIL || process.env.SMTP_USER,
     fromEmail: process.env.SMTP_FROM || process.env.SMTP_USER,
+    recaptchaSecret: process.env.RECAPTCHA_SECRET_KEY,
   };
+}
+
+async function verifyRecaptcha({ token, secret, remoteIp }) {
+  const payload = new URLSearchParams({
+    secret,
+    response: token,
+  });
+
+  if (remoteIp) {
+    payload.append("remoteip", remoteIp);
+  }
+
+  const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: payload,
+  });
+
+  if (!response.ok) {
+    return false;
+  }
+
+  const result = await response.json();
+  return Boolean(result.success);
 }
 
 function validateInput({ name, email, message, file }) {
@@ -54,6 +81,7 @@ export async function POST(request) {
     const email = String(formData.get("email") || "").trim();
     const company = String(formData.get("company") || "").trim();
     const message = String(formData.get("message") || "").trim();
+    const recaptchaToken = String(formData.get("g-recaptcha-response") || "").trim();
     const file = formData.get("jdFile");
 
     const inputError = validateInput({ name, email, message, file });
@@ -62,10 +90,32 @@ export async function POST(request) {
     }
 
     const env = getRequiredEnv();
-    if (!env.host || !env.user || !env.pass || !env.toEmail || !env.fromEmail) {
+    if (!env.host || !env.user || !env.pass || !env.toEmail || !env.fromEmail || !env.recaptchaSecret) {
       return NextResponse.json(
-        { error: "Email service is not configured." },
+        { error: "Email or captcha service is not configured." },
         { status: 500 },
+      );
+    }
+
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { error: "Captcha is required." },
+        { status: 400 },
+      );
+    }
+
+    const forwardedFor = request.headers.get("x-forwarded-for") || "";
+    const remoteIp = forwardedFor.split(",")[0]?.trim();
+    const isHuman = await verifyRecaptcha({
+      token: recaptchaToken,
+      secret: env.recaptchaSecret,
+      remoteIp,
+    });
+
+    if (!isHuman) {
+      return NextResponse.json(
+        { error: "Captcha verification failed." },
+        { status: 400 },
       );
     }
 
@@ -108,7 +158,7 @@ export async function POST(request) {
 
     return NextResponse.json({
       ok: true,
-      message: "Da gui JD thanh cong. Minh se phan hoi som!",
+      message: "JD sent successfully. I will get back to you soon!",
     });
   } catch {
     return NextResponse.json(

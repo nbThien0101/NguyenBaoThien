@@ -2,7 +2,7 @@
   name: "Nguyen Bao Thien",
   role: "Full-Stack Developer",
   location: "Ho Chi Minh City, Vietnam",
-  email: "[EMAIL_ADDRESS]",
+  email: "thienvp01@gmail.com",
   availability: "Open to full-time internships",
   intro:
     "Hi, I'm Nguyen Bao Thien! I'm a software developer and a third-year student studying Computer Science at Ho Chi Minh city University of Technology, HCMUT.",
@@ -29,60 +29,80 @@
   ],
 };
 
+export const technicalSkills = [
+  { category: "Programming",               items: ["C++", "C", "C#", "Java", "JavaScript", "Python"] },
+  { category: "Web Development",           items: ["React", "React Native", "Vite", "HTML/CSS", "Node.js"] },
+  { category: "Machine Learning / Deep Learning", items: ["TensorFlow", "PyTorch", "OpenCV"] },
+  { category: "Database",                  items: ["MongoDB", "MySQL", "PostgreSQL"] },
+  { category: "Tools",                     items: ["GitHub", "GitLab", "VSCode", "Figma", "Render", "Vercel", "Docker", "Postman", "Cloudflare", "Azure"] },
+];
+
+export const softSkills = [
+  "Communication", "Team Collaboration", "Problem Solving",
+  "Time Management", "PowerPoint Design", "Presentation", "Football",
+];
+
 export const projects = [
   {
-    title: "Sales Dashboard",
+    title: "Personal Portfolio",
     summary:
-      "A real-time analytics dashboard for tracking orders, revenue, and customer segments.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Chart.js"],
-    repo: "https://github.com/your-username/sales-dashboard",
-    live: "https://example.com",
+      "My personal portfolio website built with Next.js, showcasing my projects, resume, and story.",
+    stack: ["Next.js", "React", "CSS", "Vercel"],
+    repo: "https://github.com/nbThien0101/NguyenBaoThien",
+    live: "https://nguyen-bao-thien.vercel.app/",
   },
   {
-    title: "Booking Platform",
+    title: "Vote Tracker",
     summary:
-      "A booking system with calendar scheduling, payment flow, and admin moderation.",
-    stack: ["React", "Node.js", "Express", "MongoDB"],
-    repo: "https://github.com/your-username/booking-platform",
-    live: "https://example.com",
+      "A web-based platform to support vote counting for local People's Council elections, improving accuracy and transparency. Deployed and successfully used in a real local election.",
+    stack: ["React", "Vite", "Node.js", "MongoDB", "Render", "Vercel"],
+    repo: "https://github.com/nbThien0101/vote-tracker",
+    live: "https://vote-tracker-roan.vercel.app/",
+    highlights: [
+      "Modern React + Vite frontend deployed on Vercel for intuitive vote tracking and data visualization.",
+      "Node.js backend on Render with client-server architecture to manage election data, user roles, and vote counting.",
+      "MongoDB for flexible storage of election records, users, and vote results.",
+      "Used in a real local election with positive feedback on usability and reliability.",
+    ],
   },
   {
-    title: "Portfolio CMS",
+    title: "Bill Payment System",
     summary:
-      "A content-managed portfolio where non-technical users can update pages and projects.",
-    stack: ["Next.js", "Sanity", "Vercel"],
-    repo: "https://github.com/your-username/portfolio-cms",
-    live: "https://example.com",
+      "A full-stack bill payment system with APIs for authentication, meter reading data display, and payment processing.",
+    stack: ["Node.js", "REST API"],
+    repo: "",
+    live: "",
+  },
+  {
+    title: "Science Contest Showcase Website",
+    summary:
+      "A presentation website for the national science and engineering competition team of Huynh Thuc Khang High School.",
+    stack: ["React", "CSS", "Vite", "Vercel", "Google App Script"],
+    repo: "https://github.com/nbThien0101/KHKTQG-HTK2026-website",
+    live: "https://khktqg-htk.vercel.app/",
   },
 ];
 
 export const resume = {
-  highlights: [
-    "Built and shipped production web applications from idea to deployment.",
-    "Improved page speed and SEO performance across multiple projects.",
-    "Collaborated with designers and stakeholders to deliver user-focused features.",
+  Teacher_Assistant: [
+    "Taught 2 practical classes for the Programming Techniques course, covering core C/C++ concepts: pointers, OOP, I/O, Singly Linked List, and more.",
+    "Designed assignments and projects for students, including creating solutions and test cases.",
   ],
   experience: [
     {
-      role: "Frontend Developer",
-      company: "Your Company",
-      period: "2024 - Present",
+      role: "Backend Developer",
+      project: "Bill payment system",
+      period: "3/2026 - Present",
       details:
-        "Delivered reusable UI systems, reduced technical debt, and improved Core Web Vitals.",
-    },
-    {
-      role: "Freelance Web Developer",
-      company: "Self-employed",
-      period: "2022 - 2024",
-      details:
-        "Built business websites and internal tools for startups and small teams.",
+        "Developed server-side APIs for a bill payment system, including authentication, data display from meter readings, and payment processing features.",
     },
   ],
   education: [
     {
-      title: "B.Sc. in Information Technology",
-      school: "Your University",
-      period: "2019 - 2023",
+      title: "Student in Computer Science",
+      school: "Ho Chi Minh City University of Technology, VNU-HCM",
+      period: "2023 - 2027",
+      GPA: "3.4/4.0"
     },
   ],
 };

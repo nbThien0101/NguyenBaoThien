@@ -1,6 +1,36 @@
 import Link from "next/link";
 import Image from "next/image";
-import { projects, site } from "@/data/portfolio";
+import { projects, site, technicalSkills, softSkills } from "@/data/portfolio";
+ 
+const defaultTechIcon = "/tech-icons/default.svg";
+const noLogoSkills = new Set(["TensorFlow", "PyTorch", "OpenCV"]);
+
+const techIconMap = {
+  "C++": "/tech-icons/cpp.svg",
+  C: "/tech-icons/c.svg",
+  "C#": "/tech-icons/csharp.svg",
+  Java: "/tech-icons/java.svg",
+  JavaScript: "/tech-icons/javascript.svg",
+  Python: "/tech-icons/python.svg",
+  React: "/tech-icons/react.svg",
+  "React Native": "/tech-icons/react-native.svg",
+  Vite: "/tech-icons/vite.svg",
+  "HTML/CSS": "/tech-icons/html-css.svg",
+  "Node.js": "/tech-icons/nodejs.svg",
+  MongoDB: "/tech-icons/mongodb.svg",
+  MySQL: "/tech-icons/mysql.svg",
+  PostgreSQL: "/tech-icons/postgresql.svg",
+  GitHub: "/tech-icons/github.svg",
+  GitLab: "/tech-icons/gitlab.svg",
+  VSCode: "/tech-icons/vscode.svg",
+  Figma: "/tech-icons/figma.svg",
+  Render: "/tech-icons/render.svg",
+  Vercel: "/tech-icons/vercel.svg",
+  Docker: "/tech-icons/docker.svg",
+  Postman: "/tech-icons/postman.svg",
+  Cloudflare: "/tech-icons/cloudflare.svg",
+  Azure: "/tech-icons/azure.svg",
+};
 
 export default function Home() {
   return (
@@ -9,7 +39,7 @@ export default function Home() {
         <div className="hero-inner">
           {/* Text */}
           <div className="hero-text">
-            <p className="eyebrow"> Thien's Portfolio</p>
+            <p className="eyebrow"> Thien&apos;s Portfolio</p>
             <h1>
               {site.name}
               <span>{site.role}</span>
@@ -23,6 +53,9 @@ export default function Home() {
               <Link href="/resume" className="btn btn-secondary">
                 View Resume
               </Link>
+              <a href="/NguyenBaoThien_cv_SoftwareEngineering.pdf" download className="btn btn-secondary">
+                ⬇ Download CV
+              </a>
             </div>
           </div>
 
@@ -47,8 +80,7 @@ export default function Home() {
         <article className="panel">
           <h2>Quick intro</h2>
           <p>
-            Based in {site.location}. I focus on building products that feel fast,
-            look intentional, and are easy to maintain as the team grows.
+            A kid from Khanh Hoa who fell in love with math and code — now a third-year CS student at HCMUT, building things with purpose.
           </p>
         </article>
 
@@ -65,6 +97,48 @@ export default function Home() {
             ))}
           </ul>
         </article>
+      </section>
+
+      {/* Technical Skills */}
+      <section className="panel reveal delay-2">
+        <div className="section-header compact" style={{marginBottom: "1.2rem"}}>
+          <p className="eyebrow">Skills</p>
+          <h2>Technical Skills</h2>
+        </div>
+        <div className="skills-table">
+          {technicalSkills.map((row) => (
+            <div key={row.category} className="skills-row">
+              <span className="skills-category">{row.category}</span>
+              <div className="chip-list skills-chips">
+                {row.items.map((item) => {
+                  const iconSrc = techIconMap[item] ?? defaultTechIcon;
+                  return (
+                    <span key={item} className="chip skill-chip">
+                      {!noLogoSkills.has(item) && (
+                        <Image
+                          src={iconSrc}
+                          alt={`${item} icon`}
+                          width={16}
+                          height={16}
+                          className="skill-icon"
+                        />
+                      )}
+                      <span>{item}</span>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="section-header compact" style={{margin: "1.5rem 0 0.8rem"}}>
+          <h2>Soft Skills</h2>
+        </div>
+        <div className="chip-list">
+          {softSkills.map((s) => (
+            <span key={s} className="chip chip--soft">{s}</span>
+          ))}
+        </div>
       </section>
 
       <section className="panel reveal delay-2" id="contact">

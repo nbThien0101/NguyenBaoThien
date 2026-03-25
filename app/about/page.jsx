@@ -80,7 +80,7 @@ export default function AboutPage() {
         <h1>My Story</h1>
         <p className="lead">
           From a quiet countryside in Khánh Hòa to a CS student in Hồ Chí Minh City —
-          here's the journey that shaped who I am.
+          here&apos;s the journey that shaped who I am.
         </p>
       </section>
 

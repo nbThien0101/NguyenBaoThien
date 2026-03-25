@@ -35,6 +35,7 @@ The homepage includes a contact form where recruiters can submit:
 - JD file attachment (PDF, DOC, DOCX, TXT up to 10MB)
 
 Submitted data is sent to your inbox through SMTP via API route `POST /api/contact`.
+The form also requires Google reCAPTCHA verification to reduce spam.
 
 ## Required Environment Variables
 
@@ -47,6 +48,20 @@ Add these in `.env.local`:
 - `SMTP_PASS`: SMTP password or app password
 - `SMTP_FROM`: sender email shown in the outbound email
 - `CONTACT_TO_EMAIL`: your inbox receiving recruiter submissions
+- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`: Google reCAPTCHA site key (public key)
+- `RECAPTCHA_SECRET_KEY`: Google reCAPTCHA secret key (server key)
+
+## Enable reCAPTCHA (Spam Protection)
+
+1. Open Google reCAPTCHA admin console: https://www.google.com/recaptcha/admin/create
+2. Create a new key with these settings:
+	- Type: `reCAPTCHA v2`
+	- Option: `I'm not a robot` Checkbox
+	- Domains: add `localhost` for local development, and your production domain later
+3. Copy the generated keys into `.env.local`:
+	- `NEXT_PUBLIC_RECAPTCHA_SITE_KEY=<your site key>`
+	- `RECAPTCHA_SECRET_KEY=<your secret key>`
+4. Restart the dev server after editing env values.
 
 ## Build
 
