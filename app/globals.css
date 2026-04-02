@@ -773,6 +773,15 @@ h1 span {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
 }
 
+.story-image-hitbox {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
 .story-img {
   object-fit: cover;
   transition: transform 500ms ease;
@@ -794,6 +803,91 @@ h1 span {
   );
   filter: blur(24px);
   transform: translateY(12px);
+}
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  background: rgba(3, 8, 16, 0.84);
+  backdrop-filter: blur(8px);
+  animation: modalFadeIn 180ms ease;
+}
+
+.image-modal-content {
+  position: relative;
+  width: min(94vw, 1100px);
+}
+
+.image-modal-frame {
+  position: relative;
+  width: 100%;
+  height: min(84vh, 760px);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(7, 16, 31, 0.85);
+}
+
+.image-modal-img {
+  object-fit: contain;
+}
+
+.image-modal-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(7, 16, 31, 0.8);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-modal-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(7, 16, 31, 0.78);
+  color: var(--text);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.image-modal-nav--prev {
+  left: -18px;
+}
+
+.image-modal-nav--next {
+  right: -18px;
+}
+
+.image-modal-counter {
+  margin-top: 0.55rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Text side */
@@ -866,5 +960,17 @@ h1 span {
 
   .story-image-frame {
     height: 240px;
+  }
+
+  .image-modal-close {
+    top: -40px;
+  }
+
+  .image-modal-nav--prev {
+    left: 8px;
+  }
+
+  .image-modal-nav--next {
+    right: 8px;
   }
 }

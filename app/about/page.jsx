@@ -13,10 +13,10 @@ const storyChapters = [
     title: "A Countryside Kid with Big Curiosity",
     paragraphs: [
       "I was born and raised in a quiet countryside area in Khánh Hòa. Since I was a kid, I've always had a special interest in mathematics. My very first teacher was my dad—a high school math teacher—who patiently guided me through numbers and logic from the earliest days.",
-      "Besides math, I also loved drawing. At one point, I even won third prize in a provincial children's art competition in Khánh Hòa. I'd say I was quite a mischievous, friendly, and… kind of cute kid, right? 😄",
+      "Besides math, I also loved drawing. At one point, I even won third prize in a provincial children's art competition in Khánh Hòa. I'd say I was quite a mischievous, friendly, and… kind of cute kid, right?",
     ],
     images: [
-      { src: "/about-primary.png", alt: "Me in primary school" },
+      { src: "/family.png", alt: "Me with my family" },
       // Thêm ảnh tại đây: { src: "/about-primary-2.png", alt: "..." },
     ],
     imageLeft: true,
@@ -33,6 +33,7 @@ const storyChapters = [
     ],
     images: [
       { src: "/about-middle.png", alt: "Me in middle school" },
+      { src: "/mid-football.jpg", alt: "Me in club football at middle school" },
       // Thêm ảnh tại đây: { src: "/about-middle-2.png", alt: "..." },
     ],
     imageLeft: false,
@@ -43,13 +44,12 @@ const storyChapters = [
     eyebrow: "Chapter 03",
     title: "Milestones, Medals & Making History",
     paragraphs: [
-      "Looking pretty cool, right? 😎 With a strong passion for both math and programming, I achieved an encouragement prize in the provincial math competition.",
-      "I also claimed first prize in a provincial science and engineering contest with an embedded system for detecting driver drowsiness — a big milestone, and the first-ever first prize for my high school (pretty proud of that, not gonna lie 😆). I even got featured on television after that!",
+      "Looking pretty cool, right? With a strong passion for both math and programming, I achieved an encouragement prize in the provincial math competition.",
+      "I also claimed first prize in a provincial science and engineering contest with an embedded system for detecting driver drowsiness — a big milestone, and the first-ever first prize for my high school (pretty proud of that, not gonna lie). I even got featured on television after that!",
       "Outside of academics, football has always been a huge part of my life — a passion inherited from my dad. Honestly, he has influenced me a lot, and I truly admire him. But it wasn't until university that I finally won my first football trophy.",
     ],
     images: [
       { src: "/about-highschool.png", alt: "Me in high school" },
-      { src: "/about-university.png", alt: "Me in high sl" },
       // Thêm ảnh tại đây: { src: "/about-highschool-2.png", alt: "..." },
     ],
     imageLeft: true,
@@ -60,11 +60,15 @@ const storyChapters = [
     eyebrow: "Chapter 04",
     title: "Still the Same Passion, Bigger Stage",
     paragraphs: [
-      "And here I am today — a third-year Computer Science student at Ho Chi Minh City University of Technology, VNU-HCM. I still carry the same passion for math, programming, and football. The journey hasn't always been easy, but I've managed to maintain a GPA of 3.4/4 (not too bad, right? 😄).",
-      "Beyond studying, I actively participate in and help organize volunteer activities and faculty events. Being part of the Youth Union in the Faculty of Computer Science and Engineering has been an amazing experience — it's where I've made great friends and created some of the most memorable moments of my university life.",
+      "And here I am today — a third-year Computer Science student at Ho Chi Minh City University of Technology, VNU-HCM. I still carry the same passion for math, programming, and football. The journey hasn't always been easy, but I've managed to maintain a GPA of 3.4/4 (not too bad, right?).",
+      "Beyond my studies, I actively participate in volunteer work and help organize faculty events. Joining the Youth Union of the Faculty of Computer Science and Engineering (CSE) has been a true highlight of my university life. It's where I've had the chance to coordinate impactful events, build lasting friendships, and create unforgettable memories.",
     ],
     images: [
-      { src: "/about-university.png", alt: "Me at university" },
+      { src: "/avatar.png", alt: "Me at university" },
+      { src: "/XTN.jpg", alt: "Me at university" },
+      { src: "/DOANHOI.jpg", alt: "Me at university" },
+      { src: "/cup.jpg", alt: "Me at university" },
+      { src: "/connection.jpg", alt: "Me at university" },
       // Thêm ảnh tại đây: { src: "/about-university-2.png", alt: "..." },
     ],
     imageLeft: false,

@@ -1,31 +1,13 @@
   export const site = {
   name: "Nguyen Bao Thien",
   role: "Full-Stack Developer",
-  location: "Ho Chi Minh City, Vietnam",
   email: "thienvp01@gmail.com",
   availability: "Open to full-time internships",
   intro:
     "Hi, I'm Nguyen Bao Thien! I'm a software developer and a third-year student studying Computer Science at Ho Chi Minh city University of Technology, HCMUT.",
-  about: [
-    "I enjoy turning rough ideas into polished digital products.",
-    "My strengths are product thinking, frontend engineering, and API integration.",
-    "I care deeply about performance, accessibility, and visual consistency.",
-  ],
-  skills: [
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Express",
-    "PostgreSQL",
-    "Tailwind CSS",
-    "Docker",
-    "GitHub Actions",
-  ],
   socialLinks: [
     { label: "GitHub: nbThien0101", href: "https://github.com/nbThien0101" },
-    { label: "LinkedIn: Nguyen Bao Thien", href: "https://www.linkedin.com/in/nguyenbaothien0101" },
+    { label: "LinkedIn: Nguyen Bao Thien", href: "https://www.linkedin.com/in/nguyenbaothien01" },
   ],
 };
 
@@ -58,12 +40,6 @@ export const projects = [
     stack: ["React", "Vite", "Node.js", "MongoDB", "Render", "Vercel"],
     repo: "https://github.com/nbThien0101/vote-tracker",
     live: "https://vote-tracker-roan.vercel.app/",
-    highlights: [
-      "Modern React + Vite frontend deployed on Vercel for intuitive vote tracking and data visualization.",
-      "Node.js backend on Render with client-server architecture to manage election data, user roles, and vote counting.",
-      "MongoDB for flexible storage of election records, users, and vote results.",
-      "Used in a real local election with positive feedback on usability and reliability.",
-    ],
   },
   {
     title: "Bill Payment System",
@@ -91,7 +67,7 @@ export const resume = {
   experience: [
     {
       role: "Backend Developer",
-      project: "Bill payment system",
+      company: "Bill payment system",
       period: "3/2026 - Present",
       details:
         "Developed server-side APIs for a bill payment system, including authentication, data display from meter readings, and payment processing features.",

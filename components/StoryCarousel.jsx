@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 
 export default function StoryCarousel({ images }) {
   const [current, setCurrent] = useState(0);
+  const [previewIndex, setPreviewIndex] = useState(null);
+  const [mounted, setMounted] = useState(false);
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
   const dragStartX = useRef(null);
@@ -16,6 +19,48 @@ export default function StoryCarousel({ images }) {
   const next = () => setCurrent((c) => (c + 1) % images.length);
 
   const single = images.length === 1;
+  const isPreviewOpen = previewIndex !== null;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const openPreview = (index) => {
+    if (isDragging.current) return;
+    setPreviewIndex(index);
+  };
+
+  const closePreview = () => setPreviewIndex(null);
+
+  const prevPreview = () => {
+    if (single) return;
+    setPreviewIndex((idx) => (idx - 1 + images.length) % images.length);
+  };
+
+  const nextPreview = () => {
+    if (single) return;
+    setPreviewIndex((idx) => (idx + 1) % images.length);
+  };
+
+  useEffect(() => {
+    if (!isPreviewOpen) return undefined;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") closePreview();
+      if (e.key === "ArrowLeft") prevPreview();
+      if (e.key === "ArrowRight") nextPreview();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPreviewOpen, single]);
 
   // Touch swipe
   const handleTouchStart = (e) => {
@@ -61,14 +106,21 @@ export default function StoryCarousel({ images }) {
             key={i}
             className={`carousel-slide ${i === current ? "carousel-slide--active" : ""}`}
           >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              sizes="(max-width: 700px) 90vw, 42vw"
-              className="story-img"
-              draggable={false}
-            />
+            <button
+              type="button"
+              className="story-image-hitbox"
+              onClick={() => openPreview(i)}
+              aria-label={`View full image: ${img.alt}`}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 700px) 90vw, 42vw"
+                className="story-img"
+                draggable={false}
+              />
+            </button>
           </div>
         ))}
 
@@ -105,6 +157,60 @@ export default function StoryCarousel({ images }) {
       )}
 
       <div className="story-image-glow" />
+
+      {mounted && isPreviewOpen && createPortal(
+        <div className="image-modal" role="dialog" aria-modal="true" aria-label="Image preview" onClick={closePreview}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="image-modal-close"
+              onClick={closePreview}
+              aria-label="Close image preview"
+            >
+              ×
+            </button>
+
+            {!single && (
+              <>
+                <button
+                  type="button"
+                  className="image-modal-nav image-modal-nav--prev"
+                  onClick={prevPreview}
+                  aria-label="Previous image"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  className="image-modal-nav image-modal-nav--next"
+                  onClick={nextPreview}
+                  aria-label="Next image"
+                >
+                  ›
+                </button>
+              </>
+            )}
+
+            <div className="image-modal-frame">
+              <Image
+                src={images[previewIndex].src}
+                alt={images[previewIndex].alt}
+                fill
+                sizes="95vw"
+                className="image-modal-img"
+                priority
+              />
+            </div>
+
+            {!single && (
+              <p className="image-modal-counter">
+                {previewIndex + 1} / {images.length}
+              </p>
+            )}
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }
