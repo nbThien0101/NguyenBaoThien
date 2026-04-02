@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const navItems = [
   { href: "/", label: "Home" },
@@ -18,7 +19,14 @@ export default function Navbar() {
     <header className="site-header">
       <div className="container nav-wrap">
         <Link href="/" className="brand">
-          TN
+          <Image
+            src="/avatar.png"
+            alt="Nguyen Bao Thien"
+            width={42}
+            height={42}
+            className="brand-avatar"
+            priority
+          />
         </Link>
         <nav className="nav-links" aria-label="Primary navigation">
           {navItems.map((item) => {

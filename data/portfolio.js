@@ -44,10 +44,8 @@ export const projects = [
   {
     title: "Bill Payment System",
     summary:
-      "A full-stack bill payment system with APIs for authentication, meter reading data display, and payment processing.",
+      "Backend development for a bill payment system with APIs for authentication, meter reading data display, and payment processing.",
     stack: ["Node.js", "REST API"],
-    repo: "",
-    live: "",
   },
   {
     title: "Science Contest Showcase Website",
