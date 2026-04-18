@@ -54,7 +54,7 @@ export const projects = [
     summary:
       "Backend development for a bill payment system with APIs for authentication, meter reading data display, and payment processing.",
     stack: ["Node.js", "REST API"],
-    image: "/homepageBillPayment.png",
+    image: "/homepageBillpayment.png",
     imageAlt: "Homepage screenshot of the bill payment system project",
   },
   {
