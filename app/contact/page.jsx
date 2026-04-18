@@ -10,7 +10,7 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <main className="container page-content">
-      <section className="hero reveal">
+      <section className="hero reveal reveal-down duration-slow">
         <p className="eyebrow">Contact</p>
         <h1>
           Let&apos;s work together
@@ -22,7 +22,7 @@ export default function ContactPage() {
         </p>
       </section>
 
-      <section className="panel reveal delay-1">
+      <section className="panel reveal reveal-up reveal-stagger delay-1" data-reveal-stagger="90ms">
         <div className="section-header compact">
           <p className="eyebrow">Direct Message</p>
           <h2>Contact form</h2>

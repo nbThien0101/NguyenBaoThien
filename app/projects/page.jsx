@@ -11,12 +11,12 @@ export default function ProjectsPage() {
     <main className="container page-content">
       <section className="section-header reveal">
         <p className="eyebrow">Projects</p>
-        <h1>Selected work</h1>
+        <h1>Featured Work</h1>
       </section>
 
-      <section className="projects-grid reveal delay-1">
-        {projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+      <section className="project-showcase-list">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.title} project={project} index={index} />
         ))}
       </section>
     </main>

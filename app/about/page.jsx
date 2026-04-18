@@ -79,7 +79,7 @@ export default function AboutPage() {
   return (
     <main className="container page-content">
       {/* Header */}
-      <section className="section-header reveal">
+      <section className="section-header reveal reveal-zoom">
         <p className="eyebrow">About Me</p>
         <h1>My Story</h1>
         <p className="lead">
@@ -93,7 +93,7 @@ export default function AboutPage() {
         {storyChapters.map((chapter, index) => (
           <section
             key={chapter.id}
-            className={`story-chapter reveal delay-${Math.min(index + 1, 3)}`}
+            className={`story-chapter reveal ${chapter.imageLeft ? "reveal-left" : "reveal-right"} delay-${Math.min(index + 1, 3)}`}
           >
             <div className={`story-inner${chapter.imageLeft ? "" : " story-inner--reverse"}`}>
               {/* Carousel */}

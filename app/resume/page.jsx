@@ -8,7 +8,7 @@ export const metadata = {
 export default function ResumePage() {
   return (
     <main className="container page-content">
-      <section className="section-header reveal">
+      <section className="section-header reveal reveal-zoom">
         <p className="eyebrow">Resume</p>
         <h1>My CV</h1>
         <div className="hero-actions" style={{marginTop: "1rem"}}>
@@ -16,7 +16,7 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="reveal delay-1">
+      <section className="reveal delay-1 reveal-up duration-slow">
         <div className="cv-embed-wrap">
           <iframe
             src="/NguyenBaoThien_cv_SoftwareEngineering.pdf"
@@ -24,17 +24,17 @@ export default function ResumePage() {
             title="CV - Nguyen Bao Thien"
           >
             <p>
-              Trình duyệt không hỗ trợ xem PDF.{" "}
-              <a href="/NguyenBaoThien_cv_SoftwareEngineering.pdf" download>Tải xuống tại đây</a>.
+              Your browser does not support viewing PDF files.{" "}
+              <a href="/NguyenBaoThien_cv_SoftwareEngineering.pdf" download>Download here</a>.
             </p>
           </iframe>
         </div>
       </section>
 
-      <section className="section-header reveal">
+      <section className="section-header reveal delay-1 reveal-left">
         <h1>My Experience</h1>
       </section>
-      <section className="timeline-grid reveal delay-1">
+      <section className="timeline-grid reveal reveal-stagger delay-2 reveal-right" data-reveal-stagger="95ms">
         <article className="panel">
           <h2>Teacher Assistant in Ho Chi Minh University of Technology</h2>
           <ul className="list">

@@ -4,10 +4,11 @@
   email: "thienvp01@gmail.com",
   availability: "Open to full-time internships",
   intro:
-    "Hi, I'm Nguyen Bao Thien! I'm a software developer and a third-year student studying Computer Science at Ho Chi Minh city University of Technology, HCMUT.",
+    "Hi, I'm a software developer and a third-year student studying Computer Science at Ho Chi Minh city University of Technology, HCMUT.",
   socialLinks: [
     { label: "GitHub: nbThien0101", href: "https://github.com/nbThien0101" },
     { label: "LinkedIn: Nguyen Bao Thien", href: "https://www.linkedin.com/in/nguyenbaothien01" },
+    { label: "Facebook: Nguyen Bao Thien", href: "https://web.facebook.com/nguyenbaothien.01" },
   ],
 };
 
@@ -27,31 +28,43 @@ export const softSkills = [
 export const projects = [
   {
     title: "Personal Portfolio",
+    featuredLabel: "Featured",
     summary:
       "My personal portfolio website built with Next.js, showcasing my projects, resume, and story.",
     stack: ["Next.js", "React", "CSS", "Vercel"],
+    image: "/homepagePofolio.png",
+    imageAlt: "Homepage screenshot of the personal portfolio project",
     repo: "https://github.com/nbThien0101/NguyenBaoThien",
     live: "https://nguyen-bao-thien.vercel.app/",
   },
   {
     title: "Vote Tracker",
+    featuredLabel: "Featured",
     summary:
       "A web-based platform to support vote counting for local People's Council elections, improving accuracy and transparency. Deployed and successfully used in a real local election.",
     stack: ["React", "Vite", "Node.js", "MongoDB", "Render", "Vercel"],
+    image: "/hompageVoteTracker.png",
+    imageAlt: "Homepage screenshot of the Vote Tracker project",
     repo: "https://github.com/nbThien0101/vote-tracker",
     live: "https://vote-tracker-roan.vercel.app/",
   },
   {
     title: "Bill Payment System",
+    featuredLabel: "Featured",
     summary:
       "Backend development for a bill payment system with APIs for authentication, meter reading data display, and payment processing.",
     stack: ["Node.js", "REST API"],
+    image: "/homepageBillPayment.png",
+    imageAlt: "Homepage screenshot of the bill payment system project",
   },
   {
     title: "Science Contest Showcase Website",
+    featuredLabel: "Featured",
     summary:
       "A presentation website for the national science and engineering competition team of Huynh Thuc Khang High School.",
     stack: ["React", "CSS", "Vite", "Vercel", "Google App Script"],
+    image: "/homepageHTKWeb.png",
+    imageAlt: "Homepage screenshot of the science contest showcase website",
     repo: "https://github.com/nbThien0101/KHKTQG-HTK2026-website",
     live: "https://khktqg-htk.vercel.app/",
   },

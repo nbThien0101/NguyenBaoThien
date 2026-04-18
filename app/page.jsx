@@ -32,21 +32,45 @@ const techIconMap = {
   Azure: "/tech-icons/azure.svg",
 };
 
+function renderAnimatedWords(text, keyPrefix, baseDelay = 0.35) {
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((word, index) => (
+      <span
+        key={`${keyPrefix}-${index}-${word}`}
+        className="home-word-reveal"
+        style={{ animationDelay: `${baseDelay + index * 0.075}s` }}
+      >
+        {word}
+      </span>
+    ));
+}
+
 export default function Home() {
   return (
-    <main className="container page-content">
-      <section className="hero reveal">
+    <main className="container page-content home-page">
+      <div className="home-ambient-bg" aria-hidden="true">
+        <span className="home-orb home-orb--1" />
+        <span className="home-orb home-orb--2" />
+        <span className="home-orb home-orb--3" />
+      </div>
+
+      <section className="hero home-hero">
         <div className="hero-inner">
           {/* Text */}
           <div className="hero-text">
-            <p className="eyebrow"> Thien&apos;s Portfolio</p>
-            <h1>
-              {site.name}
-              <span>{site.role}</span>
+            <p className="eyebrow home-word-line">
+              {renderAnimatedWords("Hello my name is", "eyebrow", 0.45)}
+            </p>
+            <h1 className="home-word-line">
+              {renderAnimatedWords(site.name, "name", 0.8)}
             </h1>
-            <p className="lead">{site.intro}</p>
+            <p className="lead home-word-line home-word-line--lead">
+              {renderAnimatedWords(site.intro, "intro", 1.25)}
+            </p>
 
-            <div className="hero-actions">
+            <div className="hero-actions home-hero-actions">
               <Link href="/projects" className="btn btn-primary">
                 View Projects
               </Link>
@@ -67,7 +91,7 @@ export default function Home() {
                 src="/avatar.png"
                 alt="Nguyen Bao Thien"
                 fill
-                sizes="(max-width: 700px) 140px, 200px"
+                sizes="(max-width: 700px) 220px, 300px"
                 className="hero-avatar-img"
                 priority
               />
@@ -76,31 +100,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="content-grid reveal delay-1">
-        <article className="panel">
-          <h2>Quick intro</h2>
-          <p>
-            A kid from Khanh Hoa who fell in love with math and code — now a third-year CS student at HCMUT, building things with purpose.
-          </p>
-        </article>
-
-        <article className="panel">
-          <h2>Contact</h2>
-          <p>{site.email}</p>
-          <ul className="link-list">
-            {site.socialLinks.map((item) => (
-              <li key={item.label}>
-                <a href={item.href} target="_blank" rel="noreferrer">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </article>
-      </section>
+      
 
       {/* Technical Skills */}
-      <section className="panel reveal delay-2">
+      <section
+        className="panel reveal reveal-right delay-2 duration-slow reveal-stagger"
+        data-reveal-stagger="85ms"
+      >
         <div className="section-header compact" style={{marginBottom: "1.2rem"}}>
           <p className="eyebrow">Skills</p>
           <h2>Technical Skills</h2>
@@ -141,7 +147,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="panel reveal delay-2" id="contact">
+      <section className="panel reveal reveal-left delay-2" id="contact">
         <div className="section-header compact">
           <p className="eyebrow">Hiring</p>
           <h2>Contact for opportunities</h2>
@@ -157,12 +163,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="reveal delay-3">
+      <section className="reveal reveal-fade delay-3">
         <div className="section-header compact">
           <p className="eyebrow">Featured</p>
           <h2>Recent projects</h2>
         </div>
-        <div className="projects-grid">
+        <div className="projects-grid reveal reveal-stagger reveal-pop delay-1">
           {projects.slice(0, 3).map((project) => (
             <article key={project.title} className="project-card">
               <h3>{project.title}</h3>
