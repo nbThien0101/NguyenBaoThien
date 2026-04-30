@@ -125,20 +125,19 @@ export default function ScrollRevealObserver() {
 
       if (prefersReducedMotion) {
         el.dataset.revealed = "true";
+        el.style.opacity = "1";
+        el.style.transform = "none";
         el.classList.add("is-visible");
         return;
       }
 
-      const delayMs = parseTimeMs(
-        getComputedStyle(el).getPropertyValue("--reveal-delay")
-      );
-      const durationMs =
-        parseTimeMs(getComputedStyle(el).getPropertyValue("--reveal-duration")) ||
-        450;
+      const styles = getComputedStyle(el);
+      const delayMs = parseTimeMs(styles.getPropertyValue("--reveal-delay"));
+      const durationMs = parseTimeMs(styles.getPropertyValue("--reveal-duration")) || 450;
       const staggerMs = getRevealStaggerMs(el);
       const keyframes =
         staggerMs > 0
-          ? { opacity: [0, 1], filter: ["blur(1px)", "blur(0px)"] }
+          ? { opacity: [0, 1], y: [10, 0] }
           : getRevealKeyframes(getRevealEffectName(el));
 
       const stop = inView(
@@ -146,6 +145,8 @@ export default function ScrollRevealObserver() {
         () => {
           if (el.dataset.revealed === "true") return;
           el.dataset.revealed = "true";
+
+          el.style.willChange = "transform, opacity";
 
           const controls = animate(el, keyframes, {
             duration: durationMs / 1000,
@@ -163,6 +164,7 @@ export default function ScrollRevealObserver() {
             .catch(() => undefined)
             .finally(() => {
               el.classList.add("is-visible");
+              el.style.willChange = "auto";
             });
         },
         { amount: 0.2, margin: "0px 0px -10% 0px", once: true }
@@ -177,6 +179,9 @@ export default function ScrollRevealObserver() {
       });
     };
 
+    const pending = new Set();
+    let rafId = null;
+
     const bindAll = (root) => {
       if (!(root instanceof Element || root instanceof Document)) return;
       const elements = root.querySelectorAll(".reveal");
@@ -184,12 +189,23 @@ export default function ScrollRevealObserver() {
       if (root instanceof Element && root.matches(".reveal")) bindReveal(root);
     };
 
+    const scheduleBind = (root) => {
+      if (!(root instanceof Element || root instanceof Document)) return;
+      pending.add(root);
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        for (const node of pending) bindAll(node);
+        pending.clear();
+      });
+    };
+
     bindAll(document);
 
     const mutationObserver = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         for (const node of mutation.addedNodes) {
-          bindAll(node);
+          scheduleBind(node);
         }
       }
     });
@@ -198,6 +214,9 @@ export default function ScrollRevealObserver() {
 
     return () => {
       mutationObserver.disconnect();
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
       for (const cleanup of cleanups) {
         cleanup();
       }

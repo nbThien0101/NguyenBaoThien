@@ -22,6 +22,7 @@ export default function ResumePage() {
             src="/NguyenBaoThien_cv_SoftwareEngineering.pdf"
             className="cv-embed"
             title="CV - Nguyen Bao Thien"
+            loading="lazy"
           >
             <p>
               Your browser does not support viewing PDF files.{" "}

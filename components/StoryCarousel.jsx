@@ -118,6 +118,7 @@ export default function StoryCarousel({ images }) {
                 fill
                 sizes="(max-width: 700px) 90vw, 42vw"
                 className="story-img"
+                loading={i === current ? "eager" : "lazy"}
                 draggable={false}
               />
             </button>
@@ -198,7 +199,7 @@ export default function StoryCarousel({ images }) {
                 fill
                 sizes="95vw"
                 className="image-modal-img"
-                priority
+                loading="eager"
               />
             </div>
 

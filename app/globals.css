@@ -465,7 +465,7 @@ a {
   margin-right: 0.34ch;
   opacity: 0;
   transform: translateY(16px);
-  filter: blur(2px);
+  will-change: transform, opacity;
   animation: homeWordReveal 1.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
@@ -487,7 +487,6 @@ a {
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -1104,14 +1103,13 @@ h1 span {
 /* Reveal-on-scroll (enabled only after JS adds .reveal-ready) */
 .reveal-ready .reveal:not(.is-visible) {
   opacity: 0;
-  filter: blur(0.6px);
+  transform: translate3d(0, 8px, 0);
   will-change: opacity, transform;
 }
 
 .reveal-ready .reveal.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
   will-change: auto;
 }
 
