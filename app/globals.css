@@ -274,7 +274,7 @@ a {
 .home-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(36px);
+  filter: blur(28px);
   opacity: 0.19;
   will-change: transform;
 }
@@ -290,7 +290,8 @@ a {
     rgba(62, 199, 255, 0.3) 38%,
     rgba(62, 199, 255, 0) 74%
   );
-  animation: homeOrbFloatA 13s ease-in-out infinite alternate;
+  animation: homeOrbFloatA 13s ease-in-out 6 alternate;
+  animation-fill-mode: both;
 }
 
 .home-orb--2 {
@@ -304,7 +305,8 @@ a {
     rgba(255, 183, 77, 0.24) 40%,
     rgba(255, 183, 77, 0) 76%
   );
-  animation: homeOrbFloatB 15s ease-in-out infinite alternate;
+  animation: homeOrbFloatB 15s ease-in-out 6 alternate;
+  animation-fill-mode: both;
 }
 
 .home-orb--3 {
@@ -318,7 +320,8 @@ a {
     rgba(110, 231, 216, 0.22) 44%,
     rgba(110, 231, 216, 0) 78%
   );
-  animation: homeOrbFloatC 17s ease-in-out infinite alternate;
+  animation: homeOrbFloatC 17s ease-in-out 6 alternate;
+  animation-fill-mode: both;
 }
 
 @keyframes homeOrbFloatA {
@@ -371,13 +374,11 @@ a {
   from {
     opacity: 0;
     transform: translateY(18px);
-    filter: blur(6px);
   }
 
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
