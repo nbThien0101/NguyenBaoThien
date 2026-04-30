@@ -88,7 +88,7 @@ export default function Home() {
             <div className="hero-avatar-ring" />
             <div className="hero-avatar-frame">
               <Image
-                src="/avatar.png"
+                src="/avatar.jpeg"
                 alt="Nguyen Bao Thien"
                 fill
                 sizes="(max-width: 700px) 220px, 300px"

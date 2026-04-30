@@ -72,7 +72,7 @@ export default function Navbar() {
         <div className="container nav-wrap">
           <Link href="/" className="brand">
             <Image
-              src="/avatar.png"
+              src="/avatar.jpeg"
               alt="Nguyen Bao Thien"
               width={42}
               height={42}

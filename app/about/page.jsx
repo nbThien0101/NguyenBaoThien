@@ -49,7 +49,7 @@ const storyChapters = [
       "Outside of academics, football has always been a huge part of my life — a passion inherited from my dad. Honestly, he has influenced me a lot, and I truly admire him. But it wasn't until university that I finally won my first football trophy.",
     ],
     images: [
-      { src: "/about-highschool.png", alt: "Me in high school" },
+      { src: "/about-highschool.jpeg", alt: "Me in high school" },
       // Thêm ảnh tại đây: { src: "/about-highschool-2.png", alt: "..." },
     ],
     imageLeft: true,
@@ -64,7 +64,7 @@ const storyChapters = [
       "Beyond my studies, I actively participate in volunteer work and help organize faculty events. Joining the Youth Union of the Faculty of Computer Science and Engineering (CSE) has been a true highlight of my university life. It's where I've had the chance to coordinate impactful events, build lasting friendships, and create unforgettable memories.",
     ],
     images: [
-      { src: "/avatar.png", alt: "Me at university" },
+      { src: "/avatar.jpeg", alt: "Me at university" },
       { src: "/XTN.jpg", alt: "Me at university" },
       { src: "/DOANHOI.jpeg", alt: "Me at university" },
       { src: "/cup.jpeg", alt: "Me at university" },
