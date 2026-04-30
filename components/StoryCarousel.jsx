@@ -20,6 +20,14 @@ export default function StoryCarousel({ images }) {
 
   const single = images.length === 1;
   const isPreviewOpen = previewIndex !== null;
+  const totalSlides = images.length;
+
+  const visibleSlides = (() => {
+    if (single) return new Set([0]);
+    const prevIndex = (current - 1 + totalSlides) % totalSlides;
+    const nextIndex = (current + 1) % totalSlides;
+    return new Set([prevIndex, current, nextIndex]);
+  })();
 
   useEffect(() => {
     setMounted(true);
@@ -101,30 +109,34 @@ export default function StoryCarousel({ images }) {
         onMouseLeave={!single ? handleMouseUp : undefined}
         style={!single ? { cursor: "grab", userSelect: "none" } : undefined}
       >
-        {images.map((img, i) => (
-          <div
-            key={i}
-            className={`carousel-slide ${i === current ? "carousel-slide--active" : ""}`}
-          >
-            <button
-              type="button"
-              className="story-image-hitbox"
-              onClick={() => openPreview(i)}
-              aria-label={`View full image: ${img.alt}`}
+        {images.map((img, i) => {
+          if (!visibleSlides.has(i)) return null;
+
+          return (
+            <div
+              key={i}
+              className={`carousel-slide ${i === current ? "carousel-slide--active" : ""}`}
             >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 700px) 90vw, 42vw"
-                className="story-img"
-                loading={i === current ? "eager" : "lazy"}
-                quality={60}
-                draggable={false}
-              />
-            </button>
-          </div>
-        ))}
+              <button
+                type="button"
+                className="story-image-hitbox"
+                onClick={() => openPreview(i)}
+                aria-label={`View full image: ${img.alt}`}
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 700px) 90vw, 42vw"
+                  className="story-img"
+                  loading={i === current ? "eager" : "lazy"}
+                  quality={60}
+                  draggable={false}
+                />
+              </button>
+            </div>
+          );
+        })}
 
         {/* Counter badge — inside frame (small, corner) */}
         {!single && (

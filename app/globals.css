@@ -1182,6 +1182,16 @@ h1 span {
   transition: none;
 }
 
+.perf-mode .carousel-btn,
+.perf-mode .image-modal {
+  backdrop-filter: none;
+}
+
+.perf-mode .story-image-glow {
+  filter: none;
+  opacity: 0.6;
+}
+
 .form-lead {
   margin-top: 0.8rem;
   margin-bottom: 1rem;
@@ -1494,6 +1504,14 @@ h1 span {
   align-items: center;
   justify-content: center;
   transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.story-carousel-skeleton {
+  width: 100%;
+  height: 380px;
+  border-radius: 22px;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border);
 }
 
 .carousel-btn:hover {

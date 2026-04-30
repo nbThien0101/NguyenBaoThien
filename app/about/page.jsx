@@ -1,4 +1,4 @@
-import StoryCarousel from "@/components/StoryCarousel";
+import StoryCarouselLoader from "@/components/StoryCarouselLoader";
 
 export const metadata = {
   title: "About | Thien Portfolio",
@@ -98,7 +98,7 @@ export default function AboutPage() {
             <div className={`story-inner${chapter.imageLeft ? "" : " story-inner--reverse"}`}>
               {/* Carousel */}
               <div className="story-image-wrap">
-                <StoryCarousel images={chapter.images} />
+                <StoryCarouselLoader images={chapter.images} />
               </div>
 
               {/* Text */}

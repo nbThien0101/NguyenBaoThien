@@ -168,7 +168,7 @@ export default function ProjectCard({ project, index = 0 }) {
                 fill
                 sizes="95vw"
                 className="image-modal-img"
-                priority
+                loading="eager"
                 quality={75}
               />
             </div>
