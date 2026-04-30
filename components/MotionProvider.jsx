@@ -10,13 +10,13 @@ export default function MotionProvider({ children }) {
   const variants = {
     initial: prefersReducedMotion
       ? { opacity: 1 }
-      : { opacity: 0, y: 18, scale: 0.992, filter: "blur(6px) saturate(92%)" },
+      : { opacity: 0, y: 18, scale: 0.995 },
     animate: prefersReducedMotion
       ? { opacity: 1 }
-      : { opacity: 1, y: 0, scale: 1, filter: "blur(0px) saturate(100%)" },
+      : { opacity: 1, y: 0, scale: 1 },
     exit: prefersReducedMotion
       ? { opacity: 1 }
-      : { opacity: 0, y: -12, scale: 1.006, filter: "blur(6px) saturate(90%)" },
+      : { opacity: 0, y: -12, scale: 1.004 },
   };
 
   const transition = prefersReducedMotion
@@ -25,7 +25,6 @@ export default function MotionProvider({ children }) {
         opacity: { duration: 0.28, ease: [0.22, 1, 0.36, 1] },
         y: { type: "spring", stiffness: 280, damping: 28, mass: 0.8 },
         scale: { duration: 0.24, ease: [0.22, 1, 0.36, 1] },
-        filter: { duration: 0.24, ease: "easeOut" },
       };
 
   return (

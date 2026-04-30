@@ -49,36 +49,33 @@ function getRevealStaggerMs(element) {
 function getRevealKeyframes(effectName) {
   switch (effectName) {
     case "left":
-      return { opacity: [0, 1], x: [-42, 0], filter: ["blur(1px)", "blur(0px)"] };
+      return { opacity: [0, 1], x: [-42, 0] };
     case "right":
-      return { opacity: [0, 1], x: [42, 0], filter: ["blur(1px)", "blur(0px)"] };
+      return { opacity: [0, 1], x: [42, 0] };
     case "down":
-      return { opacity: [0, 1], y: [-18, 0], filter: ["blur(1px)", "blur(0px)"] };
+      return { opacity: [0, 1], y: [-18, 0] };
     case "zoom":
       return {
         opacity: [0, 1],
         scale: [0.94, 1],
-        filter: ["blur(1px)", "blur(0px)"],
       };
     case "pop":
       return {
         opacity: [0, 1],
         y: [14, 0],
         scale: [0.92, 1.02, 1],
-        filter: ["blur(1px)", "blur(0px)"],
       };
     case "swing":
       return {
         opacity: [0, 1],
         y: [8, 0],
         rotate: [-3, 0],
-        filter: ["blur(1px)", "blur(0px)"],
       };
     case "fade":
       return { opacity: [0, 1] };
     case "up":
     default:
-      return { opacity: [0, 1], y: [12, 0], filter: ["blur(2px)", "blur(0px)"] };
+      return { opacity: [0, 1], y: [12, 0] };
   }
 }
 
@@ -98,7 +95,7 @@ function animateStaggerChildren(element, staggerMs, baseDelayMs, durationMs) {
   return children.map((child, index) => {
     const controls = animate(
       child,
-      { opacity: [0, 1], y: [10, 0], filter: ["blur(1px)", "blur(0px)"] },
+      { opacity: [0, 1], y: [10, 0] },
       {
         duration: childDuration,
         ease: [0.22, 1, 0.36, 1],

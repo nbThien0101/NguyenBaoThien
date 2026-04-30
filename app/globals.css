@@ -91,7 +91,7 @@ a {
   from {
     opacity: 0;
     transform: translateY(-100%);
-    filter: blur(8px);
+    filter: blur(4px);
   }
 
   to {
@@ -274,8 +274,9 @@ a {
 .home-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(58px);
+  filter: blur(48px);
   opacity: 0.19;
+  will-change: transform;
 }
 
 .home-orb--1 {
@@ -370,7 +371,7 @@ a {
   from {
     opacity: 0;
     transform: translateY(18px);
-    filter: blur(10px);
+    filter: blur(6px);
   }
 
   to {
@@ -464,7 +465,7 @@ a {
   margin-right: 0.34ch;
   opacity: 0;
   transform: translateY(16px);
-  filter: blur(6px);
+  filter: blur(2px);
   animation: homeWordReveal 1.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
@@ -648,6 +649,8 @@ h1 span {
   border: 1px solid var(--border);
   background: var(--surface);
   padding: 1.15rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 240px;
   transition: transform 220ms ease, border-color 220ms ease,
     background-color 220ms ease, box-shadow 220ms ease;
 }
@@ -692,6 +695,8 @@ h1 span {
   border: none;
   background: transparent;
   overflow: visible;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 420px;
   transition: transform 320ms ease;
 }
 
@@ -1061,7 +1066,7 @@ h1 span {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
-  will-change: opacity, transform, filter;
+  will-change: auto;
 }
 
 .delay-1 {
@@ -1085,7 +1090,7 @@ h1 span {
 }
 
 .reveal-stagger > * {
-  will-change: opacity, transform, filter;
+  will-change: opacity, transform;
 }
 
 .reveal-pop {
@@ -1099,13 +1104,15 @@ h1 span {
 /* Reveal-on-scroll (enabled only after JS adds .reveal-ready) */
 .reveal-ready .reveal:not(.is-visible) {
   opacity: 0;
-  filter: blur(1px);
+  filter: blur(0.6px);
+  will-change: opacity, transform;
 }
 
 .reveal-ready .reveal.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
   filter: blur(0);
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1408,6 +1415,8 @@ h1 span {
   display: flex;
   flex-direction: column;
   align-items: center;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
 }
 
 .story-inner {
