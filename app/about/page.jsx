@@ -32,7 +32,7 @@ const storyChapters = [
       "Around that time, I was introduced to computers and programming by a relative — and that moment changed everything. That's when I knew I wanted to become a programmer.",
     ],
     images: [
-      { src: "/about-middle.png", alt: "Me in middle school" },
+      { src: "/about-middle.jpeg", alt: "Me in middle school" },
       { src: "/mid-football.jpg", alt: "Me in club football at middle school" },
       // Thêm ảnh tại đây: { src: "/about-middle-2.png", alt: "..." },
     ],
@@ -66,9 +66,9 @@ const storyChapters = [
     images: [
       { src: "/avatar.png", alt: "Me at university" },
       { src: "/XTN.jpg", alt: "Me at university" },
-      { src: "/DOANHOI.jpg", alt: "Me at university" },
-      { src: "/cup.jpg", alt: "Me at university" },
-      { src: "/connection.jpg", alt: "Me at university" },
+      { src: "/DOANHOI.jpeg", alt: "Me at university" },
+      { src: "/cup.jpeg", alt: "Me at university" },
+      { src: "/connection.jpeg", alt: "Me at university" },
       // Thêm ảnh tại đây: { src: "/about-university-2.png", alt: "..." },
     ],
     imageLeft: false,
