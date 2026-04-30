@@ -274,7 +274,7 @@ a {
 .home-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(48px);
+  filter: blur(36px);
   opacity: 0.19;
   will-change: transform;
 }
@@ -1161,6 +1161,25 @@ h1 span {
     transform: none;
     box-shadow: none;
   }
+}
+
+.perf-mode .site-header {
+  backdrop-filter: none;
+}
+
+.perf-mode .home-orb {
+  animation: none;
+  opacity: 0.12;
+}
+
+.perf-mode .project-showcase-media {
+  transform: none;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.perf-mode .hero-avatar-frame,
+.perf-mode .hero-avatar-img {
+  transition: none;
 }
 
 .form-lead {

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
 import Navbar from "@/components/Navbar";
+import PerformanceHints from "@/components/PerformanceHints";
 import ScrollRevealObserver from "@/components/ScrollRevealObserver";
 import "./globals.css";
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="reveal-ready">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <PerformanceHints />
         <div className="page-bg" aria-hidden="true" />
         <Navbar />
         <main className="site-main">

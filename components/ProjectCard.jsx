@@ -86,6 +86,7 @@ export default function ProjectCard({ project, index = 0 }) {
                 fill
                 sizes="(max-width: 900px) 100vw, 56vw"
                 className="project-showcase-image"
+                quality={70}
               />
               <span className="project-showcase-zoom-hint">View Full</span>
             </button>
@@ -168,6 +169,7 @@ export default function ProjectCard({ project, index = 0 }) {
                 sizes="95vw"
                 className="image-modal-img"
                 priority
+                quality={75}
               />
             </div>
           </div>
