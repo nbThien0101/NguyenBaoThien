@@ -466,15 +466,15 @@ a {
   transform: translate3d(0, 16px, 0); /* perf: GPU-friendly transform */
   will-change: transform, opacity;
   backface-visibility: hidden; /* perf: reduce paint artifacts */
-  animation: homeWordReveal 1400ms cubic-bezier(0.22, 1, 0.36, 1) forwards; /* chậm lại nhưng không quá */
+  animation: homeWordReveal 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards; /* smooth chunks animation */
 }
 
 .home-word-line--sub .home-word-reveal {
-  animation-duration: 1350ms; /* chậm lại nhưng không quá */
+  animation-duration: 1050ms;
 }
 
 .home-word-line--lead .home-word-reveal {
-  animation-duration: 1300ms; /* chậm lại nhưng không quá */
+  animation-duration: 1000ms;
 }
 
 .home-hero-actions {
