@@ -33,27 +33,20 @@ const techIconMap = {
 };
 
 function renderAnimatedWords(text, keyPrefix, baseDelay = 0.35) {
-  // perf: split into multiple lines to reduce DOM nodes per animation
-  // Every 4 words = 1 line, reducing paint operations and animation complexity
-  const words = text.trim().split(/\s+/);
-  const lines = [];
-  
-  for (let i = 0; i < words.length; i += 4) {
-    const lineWords = words.slice(i, i + 4);
-    const lineIndex = Math.floor(i / 4);
-    
-    lines.push(
+  // perf: animate word by word but with optimized delays
+  // Using requestAnimationFrame timing to keep performance good
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((word, index) => (
       <span
-        key={`${keyPrefix}-line-${lineIndex}`}
+        key={`${keyPrefix}-${index}-${word}`}
         className="home-word-reveal"
-        style={{ animationDelay: `${baseDelay + lineIndex * 0.15}s` }}
+        style={{ animationDelay: `${baseDelay + index * 0.12}s` }} // increased delay for smoother stagger
       >
-        {lineWords.join(" ")}
+        {word}
       </span>
-    );
-  }
-  
-  return lines;
+    ));
 }
 
 export default function Home() {

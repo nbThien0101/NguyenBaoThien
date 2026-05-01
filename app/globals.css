@@ -84,7 +84,7 @@ a {
 }
 
 .site-header--home-intro {
-  animation: headerSlideIntro 860ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: headerSlideIntro 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes headerSlideIntro {
@@ -182,7 +182,7 @@ a {
   gap: 0.92rem;
   opacity: 0;
   transform: translateY(-28px);
-  animation: homeRailSlideDown 1.22s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: homeRailSlideDown 1800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .home-side-rail--left {
@@ -370,7 +370,7 @@ a {
 
 .home-hero {
   overflow: visible;
-  animation: homeHeroEnter 720ms cubic-bezier(0.22, 1, 0.36, 1) both; /* perf: reduced from 860ms */
+  animation: homeHeroEnter 1600ms cubic-bezier(0.22, 1, 0.36, 1) both; /* chậm lại */
   will-change: transform, opacity;
   contain: layout paint style; /* perf: aggressive containment (added style) */
   transform: translateZ(0); /* perf: promote to own layer */
@@ -466,21 +466,21 @@ a {
   transform: translate3d(0, 16px, 0); /* perf: GPU-friendly transform */
   will-change: transform, opacity;
   backface-visibility: hidden; /* perf: reduce paint artifacts */
-  animation: homeWordReveal 880ms cubic-bezier(0.22, 1, 0.36, 1) forwards; /* perf: reduced from 1.24s */
+  animation: homeWordReveal 1400ms cubic-bezier(0.22, 1, 0.36, 1) forwards; /* chậm lại nhưng không quá */
 }
 
 .home-word-line--sub .home-word-reveal {
-  animation-duration: 820ms; /* perf: reduced from 1.18s */
+  animation-duration: 1350ms; /* chậm lại nhưng không quá */
 }
 
 .home-word-line--lead .home-word-reveal {
-  animation-duration: 780ms; /* perf: reduced from 1.12s */
+  animation-duration: 1300ms; /* chậm lại nhưng không quá */
 }
 
 .home-hero-actions {
   opacity: 0;
   transform: translateY(14px);
-  animation: homeActionsReveal 560ms cubic-bezier(0.22, 1, 0.36, 1) 1.4s forwards; /* perf: reduced delay from 1.95s */
+  animation: homeActionsReveal 1200ms cubic-bezier(0.22, 1, 0.36, 1) 2.0s forwards; /* chậm lại, delay lâu hơn */
 }
 
 @keyframes homeWordReveal {
