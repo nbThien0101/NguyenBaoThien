@@ -262,6 +262,8 @@ a {
   pointer-events: none;
   z-index: 0;
   overflow: visible;
+  contain: paint; /* perf: isolate heavy background painting */
+  isolation: isolate; /* perf: keep blending work local */
   mask-image: radial-gradient(
     ellipse at 50% 38%,
     rgba(0, 0, 0, 0.98) 0%,
@@ -277,6 +279,7 @@ a {
   filter: blur(28px);
   opacity: 0.19;
   will-change: transform;
+  backface-visibility: hidden; /* perf: reduce paint artifacts */
 }
 
 .home-orb--1 {
@@ -368,6 +371,7 @@ a {
 .home-hero {
   overflow: visible;
   animation: homeHeroEnter 860ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity; /* perf: hint for entry animation */
 }
 
 @keyframes homeHeroEnter {
@@ -452,7 +456,7 @@ a {
   display: inline-block;
   margin-right: 0.34ch;
   opacity: 0;
-  transform: translateY(16px);
+  transform: translate3d(0, 16px, 0); /* perf: GPU-friendly transform */
   will-change: transform, opacity;
   animation: homeWordReveal 1.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -474,8 +478,14 @@ a {
 @keyframes homeWordReveal {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
+}
+
+.home-section {
+  content-visibility: auto; /* perf: skip rendering offscreen sections */
+  contain-intrinsic-size: 1px 640px;
+  contain: layout paint; /* perf: isolate layout/paint */
 }
 
 @keyframes homeActionsReveal {

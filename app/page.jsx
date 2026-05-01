@@ -102,9 +102,9 @@ export default function Home() {
 
       
 
-      {/* Technical Skills */}
+      {/* Technical Skills (perf: content-visibility via .home-section) */}
       <section
-        className="panel reveal reveal-right delay-2 duration-slow reveal-stagger"
+        className="home-section panel reveal reveal-right delay-2 duration-slow reveal-stagger"
         data-reveal-stagger="85ms"
       >
         <div className="section-header compact" style={{marginBottom: "1.2rem"}}>
@@ -147,7 +147,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="panel reveal reveal-left delay-2" id="contact">
+  {/* Contact panel (perf: content-visibility via .home-section) */}
+  <section className="home-section panel reveal reveal-left delay-2" id="contact">
         <div className="section-header compact">
           <p className="eyebrow">Hiring</p>
           <h2>Contact for opportunities</h2>
@@ -163,7 +164,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="reveal reveal-fade delay-3">
+  {/* Featured projects (perf: content-visibility via .home-section) */}
+  <section className="home-section reveal reveal-fade delay-3">
         <div className="section-header compact">
           <p className="eyebrow">Featured</p>
           <h2>Recent projects</h2>
