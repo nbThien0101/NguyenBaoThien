@@ -78,26 +78,19 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(12px);
   background: rgba(7, 16, 31, 0.72);
   border-bottom: 1px solid var(--border);
-}
-
-.site-header--home-intro {
-  animation: headerSlideIntro 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* removed: backdrop-filter blur + animation for perf */
 }
 
 @keyframes headerSlideIntro {
   from {
     opacity: 0;
     transform: translateY(-100%);
-    filter: blur(4px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 
@@ -262,69 +255,13 @@ a {
   pointer-events: none;
   z-index: 0;
   overflow: visible;
-  contain: paint; /* perf: isolate heavy background painting */
-  isolation: isolate; /* perf: keep blending work local */
-  mask-image: radial-gradient(
-    ellipse at 50% 38%,
-    rgba(0, 0, 0, 0.98) 0%,
-    rgba(0, 0, 0, 0.86) 52%,
-    rgba(0, 0, 0, 0.18) 76%,
-    transparent 100%
-  );
+  opacity: 0; /* perf: hide ambient bg for testing */
 }
 
 .home-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(24px); /* perf: reduced from 28px for faster blur calc */
-  opacity: 0.15; /* perf: slightly reduce to offset blur reduction */
-  will-change: transform;
-  backface-visibility: hidden; /* perf: reduce paint artifacts */
-}
-
-.home-orb--1 {
-  width: 22rem;
-  height: 22rem;
-  left: -9rem;
-  top: 4rem;
-  background: radial-gradient(
-    circle at 32% 34%,
-    rgba(62, 199, 255, 0.82),
-    rgba(62, 199, 255, 0.3) 38%,
-    rgba(62, 199, 255, 0) 74%
-  );
-  animation: homeOrbFloatA 13s ease-in-out 4 alternate; /* perf: 4 cycles instead of 6 = 52s instead of 78s */
-  animation-fill-mode: both;
-}
-
-.home-orb--2 {
-  width: 19rem;
-  height: 19rem;
-  right: 8%;
-  top: -2rem;
-  background: radial-gradient(
-    circle at 40% 40%,
-    rgba(255, 183, 77, 0.8),
-    rgba(255, 183, 77, 0.24) 40%,
-    rgba(255, 183, 77, 0) 76%
-  );
-  animation: homeOrbFloatB 15s ease-in-out 4 alternate; /* perf: 4 cycles instead of 6 */
-  animation-fill-mode: both;
-}
-
-.home-orb--3 {
-  width: 16rem;
-  height: 16rem;
-  right: 18%;
-  top: 18rem;
-  background: radial-gradient(
-    circle at 45% 45%,
-    rgba(110, 231, 216, 0.76),
-    rgba(110, 231, 216, 0.22) 44%,
-    rgba(110, 231, 216, 0) 78%
-  );
-  animation: homeOrbFloatC 17s ease-in-out 4 alternate; /* perf: 4 cycles instead of 6 */
-  animation-fill-mode: both;
+  display: none; /* perf: disable all orbs for testing */
 }
 
 @keyframes homeOrbFloatA {
