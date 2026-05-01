@@ -33,18 +33,27 @@ const techIconMap = {
 };
 
 function renderAnimatedWords(text, keyPrefix, baseDelay = 0.35) {
-  return text
-    .trim()
-    .split(/\s+/)
-    .map((word, index) => (
+  // perf: split into multiple lines to reduce DOM nodes per animation
+  // Every 4 words = 1 line, reducing paint operations and animation complexity
+  const words = text.trim().split(/\s+/);
+  const lines = [];
+  
+  for (let i = 0; i < words.length; i += 4) {
+    const lineWords = words.slice(i, i + 4);
+    const lineIndex = Math.floor(i / 4);
+    
+    lines.push(
       <span
-        key={`${keyPrefix}-${index}-${word}`}
+        key={`${keyPrefix}-line-${lineIndex}`}
         className="home-word-reveal"
-        style={{ animationDelay: `${baseDelay + index * 0.075}s` }}
+        style={{ animationDelay: `${baseDelay + lineIndex * 0.15}s` }}
       >
-        {word}
+        {lineWords.join(" ")}
       </span>
-    ));
+    );
+  }
+  
+  return lines;
 }
 
 export default function Home() {
@@ -88,7 +97,7 @@ export default function Home() {
             <div className="hero-avatar-ring" />
             <div className="hero-avatar-frame">
               <Image
-                src="/avatar.jpeg"
+                src={site.avatar}
                 alt="Nguyen Bao Thien"
                 fill
                 sizes="(max-width: 700px) 220px, 300px"

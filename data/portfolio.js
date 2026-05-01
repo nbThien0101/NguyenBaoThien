@@ -1,6 +1,7 @@
   export const site = {
   name: "Nguyen Bao Thien",
   role: "Full-Stack Developer",
+    avatar: "/avatar.jpeg",
   email: "thienvp01@gmail.com",
   availability: "Open to full-time internships",
   intro:

@@ -1,4 +1,5 @@
 import StoryCarouselLoader from "@/components/StoryCarouselLoader";
+import { site } from "@/data/portfolio";
 
 export const metadata = {
   title: "About | Thien Portfolio",
@@ -64,7 +65,7 @@ const storyChapters = [
       "Beyond my studies, I actively participate in volunteer work and help organize faculty events. Joining the Youth Union of the Faculty of Computer Science and Engineering (CSE) has been a true highlight of my university life. It's where I've had the chance to coordinate impactful events, build lasting friendships, and create unforgettable memories.",
     ],
     images: [
-      { src: "/avatar.jpeg", alt: "Me at university" },
+  { src: site.avatar, alt: "Me at university" },
       { src: "/XTN.jpg", alt: "Me at university" },
       { src: "/DOANHOI.jpeg", alt: "Me at university" },
       { src: "/cup.jpeg", alt: "Me at university" },
