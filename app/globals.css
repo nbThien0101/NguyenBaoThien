@@ -644,12 +644,26 @@ h1 span {
 
 .panel,
 .project-card {
+  position: relative;
   border-radius: 18px;
   border: 1px solid var(--border);
   background: var(--surface);
   padding: 1.15rem;
   transition: transform 220ms ease, border-color 220ms ease,
-    background-color 220ms ease, box-shadow 220ms ease;
+    background-color 220ms ease;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.27);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
 }
 
 .panel:hover,
@@ -657,7 +671,10 @@ h1 span {
   transform: translateY(-4px);
   border-color: rgba(255, 183, 77, 0.34);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.27);
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 .panel h2,
@@ -693,6 +710,8 @@ h1 span {
   background: transparent;
   overflow: visible;
   transition: transform 320ms ease;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .project-showcase-card::before {
@@ -719,10 +738,22 @@ h1 span {
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.35);
   transform: perspective(1300px) rotateY(var(--media-tilt));
   transform-origin: center;
-  transition: transform 460ms ease, box-shadow 460ms ease, border-color 320ms ease;
+  transition: transform 460ms ease, border-color 320ms ease;
+  will-change: transform, opacity;
+  transform: perspective(1300px) rotateY(var(--media-tilt)) translateZ(0);
+}
+
+.project-showcase-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.35);
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 320ms ease;
 }
 
 .project-showcase-image-button {
@@ -787,8 +818,12 @@ h1 span {
 }
 
 .project-showcase-card:hover .project-showcase-media {
-  transform: perspective(1300px) rotateY(calc(var(--media-tilt) * 0.35));
+  transform: perspective(1300px) rotateY(calc(var(--media-tilt) * 0.35)) translateZ(0);
   border-color: rgba(110, 231, 216, 0.36);
+}
+
+.project-showcase-card:hover .project-showcase-media::before {
+  opacity: 0.9;
   box-shadow: 0 24px 56px rgba(0, 0, 0, 0.42);
 }
 
@@ -1060,8 +1095,7 @@ h1 span {
   --reveal-duration: 450ms;
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
-  will-change: opacity, transform, filter;
+  will-change: opacity, transform;
 }
 
 .delay-1 {
@@ -1085,7 +1119,7 @@ h1 span {
 }
 
 .reveal-stagger > * {
-  will-change: opacity, transform, filter;
+  will-change: opacity, transform;
 }
 
 .reveal-pop {
@@ -1099,13 +1133,11 @@ h1 span {
 /* Reveal-on-scroll (enabled only after JS adds .reveal-ready) */
 .reveal-ready .reveal:not(.is-visible) {
   opacity: 0;
-  filter: blur(1px);
 }
 
 .reveal-ready .reveal.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-  filter: blur(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1338,6 +1370,8 @@ h1 span {
   inset: 0;
   pointer-events: none;
   z-index: -1;
+  will-change: transform, opacity;
+  transform: translateZ(0);
   background-image: linear-gradient(
       90deg,
       rgba(255, 255, 255, 0.03) 1px,
@@ -1346,7 +1380,7 @@ h1 span {
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 24px 24px;
   mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
-  animation: gridFloat 18s linear infinite;
+  animation: none;
 }
 
 .page-bg::before,
@@ -1358,20 +1392,22 @@ h1 span {
   border-radius: 50%;
   filter: blur(70px);
   opacity: 0.22;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .page-bg::before {
   background: #23c5ff;
   top: -10vmax;
   left: -8vmax;
-  animation: blobDriftA 16s ease-in-out infinite alternate;
+  animation: none;
 }
 
 .page-bg::after {
   background: #ff8f3d;
   right: -10vmax;
   bottom: -10vmax;
-  animation: blobDriftB 20s ease-in-out infinite alternate;
+  animation: none;
 }
 
 @keyframes gridFloat {
